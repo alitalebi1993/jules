@@ -104,4 +104,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         animateParticles();
     }
+
+    // 3D Card Hover Effect
+    gsap.registerPlugin(ScrollTrigger);
+    const cards = document.querySelectorAll('.pricing-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20; // Divide to reduce sensitivity
+            const rotateY = (centerX - x) / 20;
+
+            gsap.to(card, {
+                duration: 0.5,
+                rotationX: rotateX,
+                rotationY: rotateY,
+                scale: 1.05,
+                ease: 'power2.out'
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                duration: 1,
+                rotationX: 0,
+                rotationY: 0,
+                scale: 1,
+                ease: 'elastic.out(1, 0.3)'
+            });
+        });
+    });
+
+    // Scroll-Triggered Animations for Features
+    gsap.from(".feature-item", {
+        scrollTrigger: {
+            trigger: ".features-section",
+            start: "top 80%", // Trigger when the top of the section is 80% from the top of the viewport
+            toggleActions: "play none none none"
+        },
+        duration: 1,
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        ease: "power3.out"
+    });
+
+    // Hero Parallax Effect
+    gsap.to("#hero-animation", {
+        scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            scrub: 1.5 // A value of 1.5 provides a smooth, noticeable scrub effect
+        },
+        y: 250, // Move the background down by 250px as the user scrolls through the section
+        ease: "none"
+    });
 });

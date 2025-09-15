@@ -199,6 +199,7 @@ th {
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 40px;
+    perspective: 1000px;
 }
 
 .pricing-card {
