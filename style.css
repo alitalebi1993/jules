@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #8E44AD;
+    --secondary-color: #3498DB;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-color: #E0E0E0;
+    --text-color-secondary: #BDBDBD;
+    --glow-color: rgba(142, 68, 173, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-color-secondary);
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 800px;
+    position: relative;
+}
+
+#hero-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#hero-animation canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.headline {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.sub-headline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--glow-color);
+}
+
+/* Features Section */
+.features-section {
+    background-color: var(--surface-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.feature-item {
+    background: var(--background-color);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+/* Comparison Table */
+.comparison-table {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface-color);
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    background: var(--background-color);
+}
+
+.tick {
+    color: #27AE60;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.cross {
+    color: #C0392B;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--surface-color);
+}
+
+.testimonial-slider {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.testimonial-item.active {
+    display: block;
+    opacity: 1;
+}
+
+.testimonial-item p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+.testimonial-item h4 {
+    margin-top: 1rem;
+    color: var(--secondary-color);
+}
+
+/* Pricing Section */
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.pricing-card {
+    background: var(--surface-color);
+    padding: 40px;
+    border-radius: 15px;
+    width: 320px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.pricing-card:hover, .pricing-card.popular {
+    transform: translateY(-10px);
+    border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) 1;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.pricing-card.popular {
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card.popular::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 30px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.price span {
+    font-size: 1rem;
+    color: var(--text-color-secondary);
+}
+
+.pricing-card ul {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.pricing-card ul li {
+    margin-bottom: 10px;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: var(--surface-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #333;
+    padding: 15px 0;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    text-align: left;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question.active, .faq-question:hover {
+    color: var(--secondary-color);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.faq-answer p {
+    padding: 10px;
+    color: var(--text-color-secondary);
+}
+
+/* Final CTA */
+.final-cta-section {
+    padding: 80px 20px;
+    background: linear-gradient(45deg, #0f3460, #16213e, #1a1a2e);
+}
+
+.final-cta-section h2 {
+    font-size: 2.5rem;
+}
+
+.final-cta {
+    margin-top: 20px;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--background-color);
+    border-top: 1px solid #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .headline {
+        font-size: 2.5rem;
+    }
+    .sub-headline {
+        font-size: 1.2rem;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+}
